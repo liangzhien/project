@@ -1,0 +1,62 @@
+<krpano version="1.18" title="京东智能云" onstart="startup();">
+
+
+	<!-- set skin settings: bingmaps? gyro? thumbnails? tooltips? -->
+	<skin_settings maps="false"
+	               gyro="true"
+	               title="true"
+	               thumbs="true"
+	               thumbs_width="120" thumbs_height="80" thumbs_padding="10" thumbs_crop="0|40|240|160"
+	               thumbs_opened="false"
+	               thumbs_text="true"
+	               thumbs_dragging="true"
+	               thumbs_onhoverscrolling="false"
+	               thumbs_scrollbuttons="false"
+	               thumbs_scrollindicator="false"
+	               thumbs_loop="false"
+	               tooltips_thumbs="false"
+	               tooltips_hotspots="true"
+	               tooltips_mapspots="false"
+	               loadscene_flags="MERGE"
+	               loadscene_blend="BLEND(0.5)"
+	               controlbar_offset="20"
+	               />
+  <autorotate enabled="true"  
+                waittime="1.0"   
+                speed="2"   
+                horizon="0.0"   
+                tofov="130"   
+            />  
+	<!-- set optional skin logo url -->
+	<layer name="skin_logo" url="" scale="0.25" opened_onclick="openurl('...',_blank);" />
+
+<layer name="top2" type="image" url="logo.jpg" keep="true" scale="0.2" alpha="1"  x="0" y="0"  align="topright" zorder="100" handcursor="true" onclick="openurl(http://www.sightpano.com/);">
+</layer>
+
+	<action name="startup">
+		if(startscene === null, copy(startscene,scene[0].name));
+		loadscene(get(startscene), null, MERGE);
+				switch(plugin[skin_gyro].enabled);
+		skin_buttonglow(get(name)); skin_showmap(false); skin_showthumbs();
+	</action>
+
+	
+	<scene name="scene_01" title="美即新品展" onstart="" thumburl="panos/01.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="50" fovmax="100" limitview="auto" />
+
+		<preview url="panos/01.tiles/preview.jpg" />
+
+		<image>
+		    <sphere url="images/sphere.jpg" />
+			<mobile>
+		    	<sphere url="images/sphere.jpg" />
+			</mobile>
+		</image>
+
+
+		<!-- place your scene hotspots here -->
+
+	</scene>
+
+</krpano>

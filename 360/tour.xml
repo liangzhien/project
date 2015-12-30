@@ -1,0 +1,58 @@
+<krpano>
+	
+	<!-- real partial pano for flash -->
+	<!-- <krpano devices="flash">
+		
+		<view hlookat="0" vlookat="0" fov="90" fovmin="20" fovmax="150" limitview="auto" />
+		
+		<image hfov="140.0" vfov="70.0" voffset="+5.0">
+			<sphere url="images/partpano.jpg" />
+		</image>
+		
+	</krpano> -->
+	
+	
+	<!-- simulated partial pano for html5 -->
+	<krpano devices="html5">
+		
+		<view hlookat="0" vlookat="0" fov="179" fovmin="0" fovmax="179" limitview="range" hlookatmin="-130.0" hlookatmax="+225" vlookatmin="-40.0" vlookatmax="+40.0" />
+
+		<preview url="images/mg_f.jpg" />
+		<image>
+			<cube url="images/mg_%s.jpg" />
+		</image>
+
+		<hotspot name="enter_tips"
+	       type="image"
+	       url="images/enter_tips.png"
+	        keep="false"
+	         devices="all"
+	         visible="true"
+	         enabled="true"
+	         handcursor="true"
+	         maskchildren="false"
+	         zorder=""
+	         style=""
+	         ath="23.0" atv="-10.0"
+	         edge="center"
+	         zoom="true"
+	         width="" height=""
+	         scale="1"
+	         rotate="-3.5"
+	         alpha="1.0"
+	         onover=""
+	         onhover=""
+	         onout=""
+	         ondown=""
+	         onup=""
+	         onclick="js( window.parent.goShow() )"
+	         onloaded=""
+	         />
+       />
+
+		<plugin name="gyro" devices="html5" url="js/plugins/gyro.js" enabled="true" camroll="false" friction="0" velastic="0"  />
+
+		
+	</krpano>
+
+</krpano>
