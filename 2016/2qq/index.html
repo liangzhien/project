@@ -1,0 +1,424 @@
+
+<!doctype html>
+<!--[if lte IE 6 ]> <html class="ie ie6 lte_ie7 lte_ie8" lang="zh-CN"> <![endif]-->
+<!--[if IE 7 ]> <html class="ie ie7 lte_ie7 lte_ie8" lang="zh-CN"> <![endif]-->
+<!--[if IE 8 ]> <html class="ie ie8 lte_ie8" lang="zh-CN"> <![endif]-->
+<!--[if IE 9 ]> <html class="ie ie9" lang="zh-CN"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html lang="zh-CN">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+<title>演唱会直播_demo</title>
+<meta http-equiv="Content-Language" content="zh-cn" />
+<meta name="Copyright" content="" />
+<meta name="description" content="" />
+ <link rel="stylesheet" href="http://imgcache.qq.com/mediastyle/video_2013/style/head.css"/>
+
+<link rel="stylesheet" type="text/css" href="http://v.qq.com/newyear2015/zhiboye/main.css" media="screen" />
+<style>
+.mod_video_sub .mod_video_item a.current { text-decoration: none; background: url(http://mat1.gtimg.com/v/newyear2015/zhiboye/v_nav.jpg) no-repeat 0 -31px; }
+.mod_video_sub .mod_video_item a img { display:block; }
+</style>
+<!--[if IE 6]>
+<script type="text/javascript">document.execCommand("BackgroundImageCache", false, true);</script>
+<![endif]-->
+<script type="text/javascript">
+if (/(android)|(iphone)|(ipod)/i.test(navigator.userAgent)) {
+  window.location.href = 'http://v.qq.com/ph5/variety/zt/1415kuanian/index.html';
+}
+</script>
+<script type="text/javascript" src="http://mat1.gtimg.com/www/js/jquery/jquery-1.11.1.min.js"></script>
+<script type="text/javascript">
+try{document.domain="qq.com";}catch(e){}
+function picerr(obj,i){
+obj.onerror=null;
+obj.src="http://imgcache.gtimg.cn/mediastyle/tenvideo/img/nopic/"+(i||1)+".jpg";
+}
+</script>
+</head>
+
+<body>
+<!--简版导航未登录 开始-->
+<div id="headSimpleV2" class="site_head_simple site_head_simple_thevoice" role="banner">
+    <div class="mod_inner">
+        <div class="site_logo"><a rel="home" title="返回首页" _hot="simpnav.sort.index" href="http://v.qq.com/index.html">腾讯视频</a></div>
+        <!--
+        <div class="thevoice_logo"><a class="link_logo" title="中国好声音" target="_blank" href="http://v.qq.com/voice/">中国好声音</a></div>
+        -->
+        <div id="modNewSimpleNav" class="channels_nav">
+            <div class="special_channel">
+                <a class="channel_item channel_home" _hot="simpnav.sort.index" title="首页" href="http://v.qq.com/">首页</a>
+                <i class="divied"></i><a class="channel_item" _hot="simpnav.sort.movie" title="电影" href="http://v.qq.com/movie/">电影</a>
+                <i class="divied"></i><a class="channel_item" _hot="simpnav.sort.tv" title="电视剧" href="http://v.qq.com/tv/">电视剧</a>
+                <i class="divied"></i><a class="channel_item" _hot="simpnav.sort.variety" title="综艺" href="http://v.qq.com/variety/">综艺</a>
+                <i class="divied"></i><a class="channel_item" _hot="simpnav.sort.ent" title="娱乐" href="http://v.qq.com/ent/">娱乐</a>
+                <i class="divied"></i>
+                <div id="modNavChannels" class="channel_more">
+                    <a id="modSimpleNavMore" class="channel_item" href="javascript:;"><span class="ico_text">更多</span><i class="triangle_down"></i></a>
+                    <div class="pop_nav_channels pop_nav_channels_left_7">
+                        <div class="pop_nav_channels_count">
+                            <div class="channels_list_wrap cf">
+                                <ul class="channels_list_left">
+                                    <li class="name_3">
+                                        <a class="link" _hot="simpnav.sort.us" title="英美剧" href="http://v.qq.com/tv/yingmei/"><span>英美剧</span></a>
+                                    </li>
+                                    <li>
+                                        <a class="link" _hot="simpnav.sort.news" title="新闻" href="/news/"><span>新闻</span></a>
+                                    </li>
+                                    <li>
+                                        <a class="link" _hot="simpnav.sort.sports" title="体育" href="/sports/"><span>体育</span></a>
+                                    </li>
+                                    <li>
+                                        <a class="link" _hot="simpnav.sort.mv" title="音乐" href="/music/"><span>音乐</span></a>
+                                    </li>
+                                    <li>
+                                        <a class="link" _hot="simpnav.sort.fashion" title="时尚" href="/fashion/"><span>时尚</span></a>
+                                    </li>
+                                    <li>
+                                        <a class="link" _hot="simpnav.sort.life" title="生活" href="/life/"><span>生活</span></a>
+                                    </li>
+                                    <li class="name_3">
+                                        <a class="link" _hot="simpnav.sort.doco" title="纪录片" href="/doco/"><span>纪录片</span></a>
+                                    </li>
+                                    <li>
+                                        <a class="link" _hot="simpnav.sort.cartoon" title="动漫" href="/cartoon/"><span>动漫</span></a>
+                                    </li>
+                                    <li>
+                                        <a class="link" _hot="simpnav.sort.games" title="游戏" href="/games/"><span>游戏</span></a>
+                                    </li>
+                                    <li>
+                                        <a class="link" _hot="simpnav.sort.hotshare" title="搞笑" href="/hotshare/"><span>搞笑</span></a>
+                                    </li>
+                                    <li>
+                                        <a class="link" _hot="simpnav.sort.travel" title="旅游" href="http://v.qq.com/travel/"><span>旅游</span></a>
+                                    </li>
+                                    <li class="name_3">
+                                        <a class="link" _hot="simpnav.sort.dv" title="微电影" href="/dv/"><span>微电影</span></a>
+                                    </li>
+                                </ul>
+                                <ul class="channels_list_right">
+
+                                    <li class="name_3">
+                                        <a class="link" _hot="simpnav.sort.film" title="好莱坞" target="_blank" href="http://film.qq.com/"><span>好莱坞</span></a>
+                                    </li>
+                                    <li class="name_4">
+                                        <a class="link" _hot="simpnav.sort.program" title="腾讯出品" href="/program/index.htm"><span>腾讯出品</span></a>
+                                    </li>
+                                    <li>
+                                        <a class="link" _hot="simpnav.sort.paike" title="拍客" href="/paike/"><span>拍客</span></a>
+                                    </li>
+                                    <li class="name_3">
+                                        <a class="link" _hot="simpnav.sort.v" title="微讲堂" href="/v/"><span>微讲堂</span></a>
+                                    </li>
+                                    <li class="name_4">
+                                        <a class="link" _hot="simpnav.sort.wyy" title="微影院" href="http://v.qq.com/topic/2012/wyy.html"><span>微影院</span></a>
+                                    </li>
+                                    <li>
+                                        <a class="link" _hot="simpnav.sort.live" title="直播" href="/live/index.html"><span>直播</span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mod_quick">
+
+            <form accept-charset="utf-8" id="sform" name="sform" target="_blank" method="get" class="search_form" action="http://v.qq.com/search.html?pagetype=3">
+                <div role="search" class="mod_search">
+                    <label for="keywords">搜索关键词</label>
+                    <input type="hidden" id="hid_srh_p" value="3" name="pagetype">
+                    <input type="hidden" id="searchbox_hid_tj2btn" value="search.search" name="stj2">
+                    <input type="hidden" id="searchbox_hid_stag" value="txt.index" name="stag">
+                    <input type="text" lang="zh-CN" x-webkit-grammar="builtin:search" x-webkit-speech="" autocomplete="off" maxlength="40" name="ms_key" class="inp_txt" id="iWord">
+                    <button _hot="simpnav.soso" type="submit" class="search_btn"><span>搜索</span></button>
+                </div>
+                <div style="display:none;" id="modHeadSearchSuggest" class="search_suggest_wrap">
+                    <div id="mod_keywords_list" class="mod_pop mod_pop_suggest">
+                        <ul style="" id="sgt_list"></ul>
+                    </div>
+                </div>
+            </form>
+
+            <div class="mod_top_menu">
+                <ul class="mod_head_list cf">
+                    <li id="modSimpleNavLogin" class="mod_head_item mod_head_user">
+                        <a _hot="user.login" data-type="login" class="user_login" href="javascript:;">登录</a>
+                    </li>
+                    <li style="display:none;" id="mod_head_user" class="mod_head_item mod_head_user mod_head_user_notice">
+                        <a _hot="mynav.userclick.{pagetype}" id="mod_head_notice_trigger" class="user_avatar" href="http://v.qq.com/mytv/">
+<span class="avatar_img">
+<img data-type="avatar" alt="用户头像" src="http://imgcache.gtimg.cn/mediastyle/video_2013/style/img/common/default_avatar.png">
+</span>
+                            <i style="display:none;" data-type="viplogo" class="ico_vip_grey"></i>
+                        </a>
+                        <sup id="mod_nav_user_notice_dot" style="display:none;" class="user_notice_dot"></sup>
+                        <!-- 用户头像浮层 开始 -->
+                        <div id="mod_head_notice_pop" class="pop_info_wrap mod_user_pop">
+                            <div class="pop_info_main">
+                                <i class="triangle_up"></i>
+                                <div class="pop_info_content">
+                                    <div class="user_info cf">
+                                        <div class="user_name">您好，<a data-type="nickname" class="link_name" _hot="mynav.userclick.{pagetype}" href="http://v.qq.com/mytv/"></a><a data-type="logout" class="link_quit" href="javascript:void(0);">[退出]</a></div>
+                                    </div>
+                                    <div id="mod_head_notice_content" class="user_notice">
+                                        <div class="pop_info_nothing">
+                                            <i class="ico_notice_large"></i>
+                                            <p class="hint_text">您暂时还没有收到新提醒</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li id="modHistory" class="mod_head_item mod_head_history">
+                        <a class="btn_head" target="_blank" href="http://v.qq.com/mytv/history.html"><span _hot="mynav.historyclick.{pagetype}" id="toggleHistory" class="btn_inner">看过<i class="triangle_down"></i></span></a>
+                        <div id="history_pop" class="pop_info_wrap mod_history_pop">
+                            <div class="pop_info_main">
+                                <i class="triangle_up"></i>
+                                <div id="modHistoryContent" class="pop_info_content"></div>
+                            </div>
+                        </div>
+                    </li>
+                    <li id="mod_head_favorites" class="mod_head_item mod_head_attention">
+                        <a id="mod_head_favorites_trigger" class="btn_head" _hot="mynav.followclick.{pagetype}" target="_blank" href="http://v.qq.com/mytv/follow.html"><span class="btn_inner">关注<i class="triangle_down"></i></span></a>
+                        <div id="mod_head_favorites_pop" class="pop_info_wrap mod_attention_pop mod_attention_pop_login">
+                            <div class="pop_info_main">
+                                <i class="triangle_up"></i>
+                                <div id="mod_head_favorites_content" class="pop_info_content">
+                                    <div class="pop_info_nothing pop_info_login">
+                                        <a class="btn_login" href="javascript:;">登录</a>
+                                        <p class="hint_text">请登录查看关注记录</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="mod_head_item mod_head_upload">
+                        <a class="btn_head" _hot="mynav.upload.{pagetype}" target="_blank" href="http://v.qq.com/boke/upload.html"><span class="btn_inner">上传</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--简版导航未登录 结束-->
+
+
+<div class="">
+  
+
+  <div class="layout">
+    
+    <div class="playAndCom">
+      <div class="mod_play">
+        <div class="mod_player" id="mod_player">
+          
+        </div>
+      </div>
+      <style>
+        .mod_video_list_section{padding-bottom:0; height:477px;}
+        .mod_com_list span{padding-left: 10px;}
+        .mod_com_list span em{color:#fb9004;}
+      </style>
+      <div class="mod_com_list">
+        <h4>在线讨论<span><em class="num" id="comment_total">0</em></span></h4>
+        <div class="mod_video_list_section" style="">
+            <script type='text/javascript'>
+      
+    cmt_id= 1071240629;  // 注册文章ID -评论必须 ----需要修改sdfsafsf
+    try{document.domain="qq.com";}catch(e){};
+    //非新版一键登陆需要配置
+    window.registerCoralEvent=window.registerCoralEvent||{}
+    window.CoralLiveConfig = {
+
+        type:'live', // 评论为直播 20140915 by link
+        livePersistNum:10, // 直播保留显示条数 20140915 by link
+        inputSize:30,//输入框字数限制，默认20 20141028 by v_lklin
+        firstShowNum:'all',//首次评论加载 all:全部显示，默认10条后，一条一条插入
+        height:'477',//iframe高度
+        ownStyle:'http://mat1.gtimg.com/www/coral2.0/live/css/2014kn/zhibo.css',//自定义样式,不推荐
+        // imgFlag:true,//显示图片
+        // topTitle:'show',//显示标题，（评论数）
+        iframeHeight:function(height,max_h,win_w){// iframe高度重置
+          if(max_h && win_w && $(window).width()>win_w){
+            height=max_h;
+          }
+          document.getElementById('liveCommentIframe').contentWindow.coralComment.iframeHeight(height);
+        },
+
+        commentArea:'none',//默认为show，输入区域'none':隐藏，'show'显示
+        loginEvent:function(){
+          document.getElementById('onekey').onclick(); // 注册登陆事件 ----需要修改
+        },
+        publicLogined:function(uin,nick,headUrl){   // 20130716 登陆成功回调  ----需要执行
+          document.getElementById('liveCommentIframe').contentWindow.publicLogined(uin,nick,headUrl);
+        },
+        publicLogout:function(){   // 退出回调  ----需要执行
+          document.getElementById('liveCommentIframe').contentWindow.coralComment.loginOut();
+        },
+        stop:function(){
+          document.getElementById('liveCommentIframe').contentWindow.coralComment.stop();
+        },
+        run:function(){
+          document.getElementById('liveCommentIframe').contentWindow.coralComment.run();
+        },
+        newComment:function(data){ // flash发飞幕，插入评论
+          document.getElementById('liveCommentIframe').contentWindow.coralComment.pubCallback('top',{'errCode':17,'content':decodeURIComponent(data.content)});
+        }
+    }
+    // window.registerCoralEvent=window.CoralLiveConfig;
+     window.registerCoralEvent =jQuery.extend(true, window.registerCoralEvent, window.CoralLiveConfig) ;
+</script>
+<div id="np_frame" style="width:300px;margin:auto">
+  <iframe frameborder="no" id="liveCommentIframe" src="http://www.qq.com/coral/live/testchat.htm" scrolling="no" width="100%" height="400" style="-webkit-transition: height 0.6s, 0.6s, 0.6s; transition: height 0.6s, 0.6s, 0.6s; height:300px "></iframe> 
+  <!-- <iframe frameborder="no" id="liveCommentIframe" src="../liveIframe3.0.htm" scrolling="no" width="100%" height="400" style="-webkit-transition: height 0.6s, 0.6s, 0.6s; transition: height 0.6s, 0.6s, 0.6s; height:300px "></iframe>  -->
+</div>        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- 页脚 开始 -->
+
+<!-- 页脚 结束 -->
+<script type="text/javascript" charset="utf-8"  src="http://qzs.qq.com/tencentvideo_v1/js/txv.core.min.js?max_age=86400"></script>
+<script language="javascript" src="http://qzs.qq.com/tencentvideo_v1/tvp/js/tvp.player_v2_mobile.js?v=201412302&max_age=2592000" charset="utf-8"></script>
+<!--script type="text/javascript"  charset="utf-8" src="http://imgcache.gtimg.cn/tencentvideo_v1/tvp/js/tvp.player_v2_jq.js?max_age=86400"></script-->
+
+<script type="text/javascript" src="http://mat1.gtimg.com/www/coral2.0/live/video/zhibo.js"></script>
+<div style="width:990px; margin:0 auto">
+    
+<h2>直播代码</h2>
+<pre  style="border:1px solid #ccc">
+    txv.common.initPage();
+    //直播播放器
+    var video = new tvp.VideoInfo();
+    var curChannelId = "100003601";
+    video.setChannelId(curChannelId);
+
+
+    var myplayer = new tvp.Player();
+    myplayer.create({
+        width: 762,
+        height: 520,
+        type: 1,
+        video: video,
+        modId: "mod_player",
+        flashWmode:"transparent",
+        flashVersionTag:new Date().getTime(),
+        autoplay: true,
+        liveFlashExtVars: {
+            bullet: 1,
+            advbullet: 1,
+            registid: "1071240629"
+        }
+    });
+
+    //flash 登录方法
+    window.__flashplayer_openLogin=function(){
+        Live.login.openLogin();
+    }
+
+    //登录、退出回调
+    Live.login.addLoginCallback(function(){
+        myplayer.flashobj&&myplayer.flashobj.updateLoginStatus && myplayer.flashobj.updateLoginStatus(1);
+        registerCoralEvent.publicLogined&&registerCoralEvent.publicLogined();
+        
+    });
+    Live.login.addLogoutCallback(function(){
+        myplayer.flashobj&&myplayer.flashobj.updateLoginStatus && myplayer.flashobj.updateLoginStatus(0);
+        registerCoralEvent.publicLogout&&registerCoralEvent.publicLogout();
+    });
+
+    //直播信号点击切换直播id
+    $j("#channellist").on("click","._switchchannel",function(event){
+        event.preventDefault();
+        var newId = $j(this).attr("data-channelid");
+        if(newId && newId !=curChannelId){
+            curChannelId = newId;
+            $j("._switchchannel").removeClass("current");
+            $j(this).addClass("current");
+            video.setChannelId(curChannelId);
+            myplayer.play(video);
+            txv.common.btnTj("kn.switch."+curChannelId);
+        }
+    });
+
+    //直播信号hover切换图片
+    var $imgs = $j("._switchchannel>img"),
+        curIndex = 0,
+        length = $imgs.length,
+        timer = setInterval(function(){
+            var $img= $imgs.eq(curIndex),
+                src=$img.attr("src").replace(/\?.+/,"");
+            $img.fadeTo(800, 0.7, function() {$j(this).attr("src",src+"?t="+(+new Date)+"&max_age=0");}).fadeTo(800, 1);
+            curIndex = (++curIndex)%length;
+    },5000);
+
+    //历年回顾下拉菜单
+    $j("#mod_nav_review").on("mouseenter",function(){
+        $j(this).addClass("hover");
+    }).on("mouseleave",function(){
+        $j(this).removeClass("hover")
+    })
+    /*  |xGv00|404d955e6a47ebd1e2a41caeb6b71349 */
+</pre>
+<h2>评论直播代码-在页面上配置</h2>
+<a href="http://www.qq.com/coral/live/live_demo.htm">http://www.qq.com/coral/live/live_demo.htm</a>
+<pre style="border:1px solid #ccc">
+      
+    cmt_id= 1071240629;  // 注册文章ID -评论必须 ----需要修改sdfsafsf
+    try{document.domain="qq.com";}catch(e){};
+    //非新版一键登陆需要配置
+    window.registerCoralEvent=window.registerCoralEvent||{}; //flash 中修改后会去掉
+    window.CoralLiveConfig = {
+
+        type:'live', // 评论为直播 20140915 by link
+        livePersistNum:10, // 直播保留显示条数 20140915 by link
+        inputSize:30,//输入框字数限制，默认20 20141028 by v_lklin
+        firstShowNum:'all',//首次评论加载 all:全部显示，默认10条后，一条一条插入
+        height:'477',//iframe高度
+        ownStyle:'http://mat1.gtimg.com/www/coral2.0/live/css/2014kn/zhibo.css',//自定义样式,不推荐
+        // imgFlag:true,//显示图片
+        // topTitle:'show',//显示标题，（评论数）
+        iframeHeight:function(height,max_h,win_w){// iframe高度重置
+          if(max_h && win_w && $(window).width()>win_w){
+            height=max_h;
+          }
+          document.getElementById('liveCommentIframe').contentWindow.coralComment.iframeHeight(height);
+        },
+
+        commentArea:'none',//默认为show，输入区域'none':隐藏，'show'显示
+        loginEvent:function(){
+          document.getElementById('onekey').onclick(); // 注册登陆事件 ----需要修改
+        },
+        publicLogined:function(uin,nick,headUrl){   // 20130716 登陆成功回调  ----需要执行
+          document.getElementById('liveCommentIframe').contentWindow.publicLogined(uin,nick,headUrl);
+        },
+        publicLogout:function(){   // 退出回调  ----需要执行
+          document.getElementById('liveCommentIframe').contentWindow.coralComment.loginOut();
+        },
+        stop:function(){
+          document.getElementById('liveCommentIframe').contentWindow.coralComment.stop();
+        },
+        run:function(){
+          document.getElementById('liveCommentIframe').contentWindow.coralComment.run();
+        },
+        newComment:function(data){ // flash发飞幕，插入评论
+          document.getElementById('liveCommentIframe').contentWindow.coralComment.pubCallback('top',{'errCode':17,'content':decodeURIComponent(data.content)});
+        }
+    }
+
+     window.registerCoralEvent =jQuery.extend(true, window.registerCoralEvent, window.CoralLiveConfig) ;//flash 中修改后会去掉
+
+
+</pre>
+
+</div>
+</body>
+</html>
