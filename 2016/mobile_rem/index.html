@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="full-screen" content="yes">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <title>rem</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="lib/zepto.min.js" type="text/javascript" charset="utf-8"  data-width=640  data-height=1008></script>
+    <script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+    <div class="loading">
+        <div class="spinner">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+        </div>
+        <div class="loading_data">LOADING</div>
+    </div>
+    <div class="wrap">
+    	<div class="box box1">
+    		<img src="images/feng.png" alt="" />
+    	</div>
+     	<div class="box box2">
+    		<img src="images/feng.png" alt="" />
+    	</div>   	
+    </div>
+    <script src="lib/load.img.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+	    var imgList = ["images/loading.gif","images/feng.png"]
+	    var imgLoadStart  = new ImgLoader(imgList,function(a,b){
+	   //   alert("loaded");
+	      $('.loading').hide();
+	     
+	    },function(a,b){
+	    	 $(".loading_data").text(a+"%");
+	    	  console.log(a)
+	    });
+		
+		$(document).on("touchmove",function(e){
+			e.preventDefault();
+		})
+		$('.wrap').on({
+			"swipeLeft" : function(){
+				var a = Math.random();
+				alert("swipeLeft:"+a)
+			},
+			"swipeRight" : function(){
+				var a = Math.random();
+				alert("swipeRight:"+a)
+			},
+			"swipeUp" : function(){
+				var a = Math.random();
+				alert("swipeUp:"+a)
+			},
+			"swipeDown" : function(){
+				var a = Math.random();
+				alert("swipeDown:"+a)
+			},
+			"longTap" : function(){
+				var a = Math.random();
+				alert("longTap:"+a)
+			}
+		})
+		$.ajax({
+			type:"get",
+			url:App.domain+"?act=get_carname",
+			async:true,
+			success : function(data){
+				alert(data)
+			}
+		});
+
+    </script>
+</body>
+</html>

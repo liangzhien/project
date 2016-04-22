@@ -1,0 +1,33 @@
+﻿body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td { margin:0; padding:0; }
+body, button, input, select, textarea {    font:12px/1.5  arial, 'Hiragino Sans GB', 'Microsoft Yahei', "微软雅黑", "黑体", "宋体", Tahoma, Arial, Helvetica, STHeiti; }
+body{ background:#fff; color:#999999; }
+h1, h2, h3, h4, h5, h6 { font-size:100%; }
+ul, ol,li { list-style:none;  }
+a { text-decoration:none; }
+a:hover { text-decoration:underline; }
+fieldset, img { border:0; }
+img{ display: block; }
+button, input, select, textarea { font-size:100%; outline: none; }
+table { border-collapse:collapse; border-spacing:0; }
+body,html{ width: 100% ; height: 100%;overflow: hidden;}
+/* Common */
+.fl { float:left; display: inline; }
+.fr { float:right; display: inline; }
+.clear { clear:both; }
+/*万能闭合*/
+.clearfix:after { content:"."; display:block; height:0; clear:both; visibility:hidden; }
+.clearfix { display:inline-block; }
+.clearfix {display:block;}
+.w100{ width:100%}
+.hide{display: none; }
+.ico{ position: absolute; }
+.wrap,.box{ position: absolute; width: 100%;height: 100%;}
+.box{ display: none;background: url(../images/1.jpg); background-size: cover; background-position: center center}
+.img2{ position: absolute; left: 43.92857142857143%;top: 38.83720930232558%;width: 3.57142857142857%;}
+.ico1{ position: absolute; background-image: url(../images/sp1.png);}
+h1{ left: 2.69%;top:4.4%;z-index: 9; }
+.img{ position: absolute;}
+h1 a{ width: 100%;}
+.nav{ width: 302px; height: 100%; right: 0;top: 0;z-index: 9;background: rgba(0,0,0,0);}
+.nav .line{ left: 224px; width: 1px;height: 100%;overflow: hidden;font-size: 0;background: #fff; opacity: .2; filter: alpha(opacity=20);} 
+.nav .i1{ left: 203px;top: 38px; width: 44px;height: 44px;}

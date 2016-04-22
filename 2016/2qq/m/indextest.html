@@ -1,0 +1,69 @@
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<meta content="no-cache" http-equiv="Cache-Control" />
+<meta content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" name="viewport" />
+<meta content="telephone=no" name="format-detection" />
+<link type="image/x-icon" rel="shortcut icon" href="http://appmedia.qq.com/media/h5e/h5e-icon.png" />
+<title>点播视频示例</title>
+<link href="http://appmedia.qq.com/media/h5e/h5e.css" rel="stylesheet" />
+<style>
+body {
+  font-family: Microsoft Yahei;
+  background: url(http://appmedia.qq.com/media/h5e/video/bg.jpg);
+  background-size: 320px 570px;
+  background-repeat: no-repeat;
+}
+.logo {
+  position: absolute;
+  top: 10px;
+  left: 55px;
+  width: 211.9px;
+  height: 142.6px;
+}
+.player {
+  position: absolute;
+  top: 160px;
+  left: 10px;
+  height: 165px;
+}
+.text {
+  position: absolute;
+  top: 390px;
+  left: 10px;
+  color: #C8C8C8;
+  font-size: 13px;
+}
+</style>
+</head>
+<body>
+  <img class="logo" src="http://appmedia.qq.com/media/h5e/video/logo.png" />
+  <div class="player" id="player"></div>
+  <div class="text">
+    <p>【内容丰富】涵盖电影、电视剧、直播等最新分类</p>
+    <p>【高清画质】1080P影片，给您影院视听享受</p>
+    <p>【播放流畅】采用P2P下载引擎，根据网络自适应</p>
+    <p>【互动分享】一键分享，直播互动边看边聊</p>
+  </div>
+  <script src="http://imgcache.gtimg.cn/tencentvideo_v1/tvp/js/tvp.player_v2.js"></script>
+  <script src="http://appmedia.qq.com/media/h5e/zepto.min.js"></script>
+  <script src="http://appmedia.qq.com/media/h5e/h5e.js"></script>
+
+  <script>
+  
+  $(function() {
+      var player = h5e.video.init({
+          modId: "player",
+          vid: "i001216370f",
+          width: 300,
+          height: 165.6,
+          type: 1,
+          onplay: function (argument) {
+            // 当视频播放时候执行停止
+            h5e.audio.stop();
+          }
+      });
+  });
+  </script>
+</body>
+</html>

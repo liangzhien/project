@@ -1,0 +1,317 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+
+<title>滚动</title>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<style>
+	html,body{ position: relative; width: 100%; height: 100%;overflow: hidden;}
+	.wrap{ position: absolute; width: 100%; height: 100%;overflow: hidden;}
+	.page{ position: relative; width: 100%;height: 800px;background: #000000;font-size: 30px;color: #fff;}
+	.page2{ background: #2084CF;}
+	.page3{ background: #44CF9D;}
+	.page4{ background-color: #002F71}
+	.scroll_bd{ position: relative; }
+	.nav{ position: absolute; top: 20px;left: 20px;}
+	.nav li { width: 100px; height: 100%; margin-bottom: 20px;background: #ccc;font-size: 30px;text-align: center;color: #fff;cursor: pointer;}
+	.nav li.on{ background: #002F71; }
+	.page5{ height: 1000px;}
+	.box{ display: none; position: absolute; width: 200px; height: 200px;background: #fff;}
+</style>
+</head>
+<body>
+<div class="wrap">
+	<div class="scroll_bd" id="scroll">
+	    <div class="page page1">
+	    	1
+	    </div>
+	    <div class="page page2">
+	    	2<div class="box "></div>
+	    </div>   
+	    <div class="page page3">
+	    	3<div class="box "></div>
+	    </div> 
+	    <div class="page page4">
+	    	4
+	    	
+	    </div> 
+	    
+	</div>
+    <ul class="nav">
+    	<li>1</li>
+    	<li>2</li>
+    	<li>3</li>
+    	<li>4</li>
+    </ul>
+</div>
+<script src="lib/jquery-1.10.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/jquery.mousewheel.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/jquery.easing.1.3.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+<script></script>
+<script>
+	function ScrollBox(o){
+		var o = o||{};
+		this.$box = o.box|| $("#scroll");
+		this.callBack = o.callBack;
+		this.$child = this.$box.find('.page');
+		this.$win = $(window);
+		this.$nav = $(".nav li");
+		this.curNum  = 0;
+		this.maxNum =0;
+		this.l = this.$child.length;
+		this.posArr = [];
+		this.isClik  = true;
+		this.isBottom = false;
+		this.winH;
+		var self = this;
+		this.$win.resize(function(){
+			self.reset();
+			self.getPos();
+		});
+		this.reset();
+		this.getPos();
+		this.init();
+	}
+	ScrollBox.prototype = {
+		init : function(){
+			var self = this;
+			var startTime = new Date().getTime();
+		    $(document).on('mousewheel',function(e,d){
+		    	//mac
+		    	//if(new Date().getTime()-startTime < 500) return;
+		    	//startTime = new Date().getTime();
+		        if(d>0){
+		        	
+		        	self.curNum+=100;
+		        	if(self.curNum>0){
+		        		self.curNum=0;
+		        	}
+		            self.$box.stop(true).animate({"top":self.curNum+"px"},500,"easeOutCubic",function(){
+		            	self.callBack&& self.callBack();
+		            });
+		            self.isBottom = false;
+		        }else{
+		        	if(!self.isBottom){
+		        		self.curNum-=100;
+		        	}
+		        	if(Math.abs(self.curNum)>self.maxNum){
+		        		self.curNum=-self.maxNum;
+		        	}	    
+		        	if(self.isBottom){return};
+		        	
+		            self.$box.stop(true).animate({"top":self.curNum+"px"},500,"easeOutCubic",function(){
+		            	self.callBack&& self.callBack();
+		            	if(self.curNum==-self.maxNum){
+		            		self.isBottom =true;
+		            	}
+		            });
+		        }
+		        self.scroll();
+		        self.callBack&& self.callBack();
+		    });		
+	        //导航点击
+	        this.$nav.bind("click", function(){
+	            var i = $(this).index();
+	            goNav(i);
+	        });
+	        goNav(0);
+	        function goNav(i){
+	             self.$nav.eq(i).addClass("on").siblings().removeClass("on");
+	             self.$box.stop(true).animate({"top":self.posArr[i]+'px'},600,"easeOutCubic",function(){
+	             	self.isClick = false;
+	             	self.callBack&& self.callBack();
+	             });
+             	self.curNum = self.posArr[i];
+             	self.scroll();	    
+             	
+	        }		    
+		},
+		scroll : function(){
+             for( var i=0; i<this.l; i++ ){
+                if( i <  this.l - 1 ){
+                    if(  Math.abs(this.curNum) >= Math.abs(this.posArr[i]) &&  Math.abs(this.curNum) < Math.abs(this.posArr[i+1]) ){
+                            this.$nav.eq(i).addClass("on").siblings().removeClass("on");
+                            this.$child.eq(i).addClass("on").siblings().removeClass("on");
+                    }
+                }else{
+                    if(  Math.abs(this.curNum) >= Math.abs(this.posArr[i]) ){
+                            this.$nav.eq(i).addClass("on").siblings().removeClass("on");
+                            this.$child.eq(i).addClass("on").siblings().removeClass("on");
+                    }
+                }
+                
+            }  			
+		},
+		reset : function(){
+			this.$child.css({"height":this.$win.height()})
+			this.maxNum = this.$box.outerHeight()-this.$win.height();	
+			this.winH = this.$win.height();
+		},
+		getPos : function (){
+			var self = this;
+			this.posArr = [];
+			this.$child.each(function(i){
+				var top =  $(this).position().top == 0 ?  $(this).position().top : -$(this).position().top;
+				self.posArr.push(top);
+			});
+		}		
+	}
+
+	var ani1 =(function(){
+		function play(){
+			$(".page2 .box").fadeIn();
+		}
+		function reset(){
+			$(".page2  .box").fadeOut();
+		}
+
+		return {
+			play : play,
+			reset : reset
+		}
+	})();
+	var ani2 =(function(){
+		function play(){
+			$(".page3 .box").fadeIn();
+		}
+		function reset(){
+			$(".page3  .box").fadeOut();
+		}
+
+		return {
+			play : play,
+			reset : reset
+		}
+	})();	
+	var arrAni = [ani1,ani2]
+	var s = new ScrollBox({
+		"callBack" : function(){
+			var self  =this;
+			var $page2= self.$child.eq(1);
+			var $page3= self.$child.eq(2);
+			var curNum = Math.abs(self.curNum );
+			if($page2.position().top-self.winH/2<curNum 
+			&&  $page2.position().top-curNum+self.winH>0){
+				arrAni[0].play();
+			}else{
+				arrAni[0].reset();				
+				
+			}
+			if($page3.position().top-self.winH/2<curNum 
+			&&  $page3.position().top-curNum+self.winH>0){
+				arrAni[1].play();
+			}else{
+				arrAni[1].reset();				
+				
+			}
+		}
+	});
+	var scrollBox2 = function(o){
+		var o = o||{};
+		var $box = $(o.box);
+		var $win = $(window);
+		var curNum = 0;
+		var maxNum = 0;
+		var $child = $box.find('.page'),$nav = $(".nav li");
+		var l = $child.length;
+		var posArr = [];
+		var isClick = false;
+		var isBottom= false;
+		
+		function setHeight(){
+			$child.css({"height":$win.height()})
+			maxNum = $box.outerHeight()-$win.height();
+		}
+		function getPos(){
+			posArr = [];
+			$child.each(function(i){
+				var top =  $(this).position().top == 0 ?  $(this).position().top : -$(this).position().top;
+				posArr.push(top);
+			});
+		}
+        function scroll(){
+             for( var i=0; i<l; i++ ){
+                if( i < l - 1 ){
+                    if(  Math.abs(curNum) >= Math.abs(posArr[i]) &&  Math.abs(curNum) < Math.abs(posArr[i+1]) ){
+                            $nav.eq(i).addClass("on").siblings().removeClass("on");
+                            $child.eq(i).addClass("on").siblings().removeClass("on");
+                    }
+                }else{
+                    if(  Math.abs(curNum) >= Math.abs(posArr[i]) ){
+                            $nav.eq(i).addClass("on").siblings().removeClass("on");
+                             $child.eq(i).addClass("on").siblings().removeClass("on");
+                    }
+                }
+            }       
+            
+        }		
+		    $(document).on('mousewheel',function(e,d){
+		    	//mac
+		    	//if(new Date().getTime()-startTime < 500) return;
+		    	//startTime = new Date().getTime();
+		        if(d>0){
+		        	
+		        	curNum+=150;
+		        	if(curNum>0){
+		        		curNum=0;
+		        	}
+		            $box.stop(true).animate({"top":curNum+"px"},600,"easeOutCubic",function(){});
+		            isBottom = false;
+		        }else{
+		        	if(!isBottom){
+		        		curNum-=150;
+		        	}
+		        	
+		        	if(Math.abs(curNum)>maxNum){
+		        		curNum=-maxNum;
+		        	}	    
+		        	if(isBottom){return};
+		        	
+		            $box.stop(true).animate({"top":curNum+"px"},600,"easeOutCubic",function(){
+		            	if(curNum==-maxNum){
+		            		isBottom =true;
+		            	}
+		            });
+		        }
+		        scroll();
+
+		    });	
+       
+		$(window).resize(function(){
+			setHeight();
+			getPos();
+			scroll();
+		});
+		scroll();
+		setHeight();
+		getPos();
+        //导航点击
+        $nav.bind("click", function(){
+            var i = $(this).index();
+            goNav(i);
+        });
+        goNav(0);
+        function goNav(i){
+             $nav.eq(i).addClass("on").siblings().removeClass("on");
+             $box.stop(true).animate({"top":posArr[i]+'px'},600,"easeOutCubic",function(){
+             	isClick = false;
+             	curNum = posArr[i];
+             });
+             scroll();
+        }
+
+
+	};
+//	scrollBox2({
+//		"box":'.scroll_bd',
+//		"callBack" : function(){
+//			
+//		}
+//	});
+</script>
+</body>
+
+</html>

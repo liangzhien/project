@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="full-screen" content="yes">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <title>rem</title>
+    <link rel="stylesheet" href="css/style.css">
+	<script src="lib/jquery.js" type="text/javascript" charset="utf-8"></script>
+
+    <script>
+        var phoneScale = parseInt(window.screen.width)/640;
+        document.write('<meta name="viewport" content="width=640, initial-scale = '+phoneScale+', maximum-scale = '+phoneScale+', maximum-scale = '+phoneScale+', target-densitydpi=device-dpi">');
+    </script>
+    <style type="text/css">
+    	#sketchpad{ display: block; width: 600px;height: 500px; margin: 0 auto;border: 1px solid #ccc;}
+    	#imgedit{ display: block; width: 600px;height: 500px; margin: 0 auto;border: 1px solid #ccc;}
+    	#imgedit canvas{border: 1px solid #ccc; }
+    </style>
+</head>
+<body>
+
+    <div class="wrap">
+    	<div class="page page1">
+    		<canvas id="sketchpad"></canvas>
+    		<div class="line">
+    			画笔大小
+    			<a href="javascript:;">5</a>
+    			<a href="javascript:;">10</a>
+    			<a href="javascript:;">15</a>
+    		</div>
+     		<div class="color">
+    			颜色
+    			<a href="javascript:;"  data-color="#ee0a0a">红色</a>
+    			<a href="javascript:;"  data-color="#0a22d4">蓝色</a>
+    			<a href="javascript:;" data-color="#96ee0a">黄色</a>
+    		</div>   
+    		<a href="javascript:;" onclick="re()">回播</a>
+    		<a href="javascript:;" onclick="next()">完成</a>
+    		<img src="" class="result"/>
+    	</div>
+		<div class="page page2 hide">
+			<div id="imgedit">
+				
+			</div>
+			<a href="javascript:;" onclick="next2()">完成</a>
+			<img src="" class="result"/>
+			<img src="images/story3.jpg" class="img"/>
+			<img src="images/story4.jpg"  class="img"/>
+			<img src="images/bg.jpg"  class="img"/>
+			<input type="file" name="file" id="file" value="" class="hide" />
+		</div>
+    </div>
+ 	<script src="lib/sketchpad.js" type="text/javascript" charset="utf-8"></script>
+ 	<script src="lib/imagedit.min.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+		var sketchpad = new Sketchpad({
+		  element: '#sketchpad',
+		  width: 600,
+		  height: 500
+		});
+		$(".line a").on("click",function(){
+			var size =parseInt( $(this).text());
+			sketchpad.penSize = size;
+		});
+		$(".color a").on("click",function(){
+			var color = $(this).attr('data-color');
+			sketchpad.color  = color;
+		});		
+		var editor = new mo.ImageEditor({
+		    trigger: $('#file'),
+		    container: $('#imgedit'),
+		    width: 600,
+		    height: 500,
+		    stageX:  $('#imgedit')[0].offsetLeft,
+
+			iconClose: {
+				url: 'images/icon.png',
+				rect: [400, 300, 40, 40]
+			}
+	
+		});		
+		function re(){
+			sketchpad.animate(10);
+		}
+		
+		var resultImg;
+		function next(){
+			resultImg =  $('#sketchpad')[0].toDataURL();
+			var img = new Image();
+			img.onload = function(){
+				editor.addImage({img: img,disable:true,dismove:true });
+				$(".page1").hide();
+				$('.page2').show();
+			}
+			img.src = resultImg;
+
+		}
+		function next2(){
+			editor.toDataURL(function(data){
+				$('.result').attr("src",data);	
+			});
+
+		}
+		$('.img').on("click",function(){
+			editor.addImage({img: $(this)[0] });
+		});
+    </script>
+</body>
+</html>

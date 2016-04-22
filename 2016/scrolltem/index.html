@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="full-screen" content="yes">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <title>scroll视差</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<div class="loading"></div>
+<ul class="nav">
+	<li>1</li>
+	<li>2</li>
+	<li>3</li>
+	<li>4</li>
+	<li>5</li>
+</ul>
+<div class="page page1 zIndex"  id="trigger">
+	<div class="scene">
+		<img data-src="images/1.jpg" alt="" />
+	</div>
+	
+</div>
+<div class="page page2 mar1" >
+	<img data-src="images/1.jpg" alt="" />
+	
+	<div class="animationMetro"></div>
+</div>
+<div class="page page3 zIndex" id="trigger2">
+	<div class="scene">
+		<img data-src="images/1.jpg" alt="" />
+		<div class="box" id="animate1">11111</div>
+	</div>
+</div>
+<div class="page page4 mar2">
+	<img data-src="images/2.jpg" alt="" />
+</div>
+<div class="page page5">
+	<img data-src="images/1.jpg" alt="" />
+	<img data-src2="images/1.jpg" alt="" />
+</div>    
+<script src="libs/jquery-1.11.2.min.js" type="text/javascript" charset="utf-8" ></script>
+<script src="libs/TweenMax.min.js" type="text/javascript" charset="utf-8" ></script>
+<script src="libs/jquery.mousewheel.js" type="text/javascript" charset="utf-8" ></script>
+<script src="libs/ScrollMagic.min.js" type="text/javascript" charset="utf-8" ></script>
+<script src="libs/animation.gsap.js" type="text/javascript" charset="utf-8" ></script>
+<script src="libs/jquery.easing.1.3.js" type="text/javascript" charset="utf-8" ></script>
+<script src="libs/debug.addIndicators.js" type="text/javascript" charset="utf-8" ></script>
+<script src="extends/jquery.scroll.js" type="text/javascript" charset="utf-8"></script>
+<script src="extends/loading.js" type="text/javascript" charset="utf-8" ></script>
+<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+
+</body>
+</html>

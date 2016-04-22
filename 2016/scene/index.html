@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="full-screen" content="yes">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <title>移动场景+重力</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/common.js" type="text/javascript" charset="utf-8" data-width=640></script>
+    <style type="text/css">
+    	.home{ overflow: hidden;}
+    	.layer{ position: absolute; width: 57.6rem;background: url(images/scene.jpg); height: 10.27rem;background-size: 57.6rem auto;}
+    </style>
+</head>
+<body>
+    <div class="wrap home ">
+        <div class="layer">
+        	
+        </div>
+    </div>
+
+    <script>
+    	var isEnabled = true;
+    	var $layer = $('.layer'),
+    		w = $(window).width(),
+    		moveAlpha = 0,
+    		moveObj = {},
+    		curX = 0,
+    		prevX=0;
+    		maxVal = -w*8;
+    	$('.wrap').on({
+    		'touchstart' : function(e){
+    			var e	 = e.originalEvent.changedTouches ? e.originalEvent.changedTouches[0] : e;
+    			moveObj.x = e.pageX;
+    		},
+    		'touchmove' : function(e){
+    			 e.preventDefault(); 
+    			 var touchs = e.originalEvent.changedTouches ? e.originalEvent.changedTouches[0] : e;
+    			 
+    			 curX = touchs.pageX - moveObj.x+prevX;
+    			 if(curX>0){
+    			 	curX = 0;
+    			 }
+    			 if(curX<maxVal){
+    			 	curX = maxVal;
+    			 }
+    			// 
+	 			 $layer.css({
+					'-webkit-transform' : 'translate3d(' + curX + 'px, 0, 0)',
+					'transform' : 'translate3d(' + curX + 'px, 0, 0)'
+				});   			
+    		},
+    		'touchend' : function(e){
+    			moveObj.x = 0;
+    			prevX = curX;
+    		}
+    	});
+    	var firstAlpha=0,currentAlpha=0;
+    	window.addEventListener('deviceorientation', function(event) {
+		if (isEnabled) {
+			currentAlpha = 360 - parseInt(event.alpha);
+			var shift = firstAlpha - currentAlpha;
+			var alphaX;
+			
+			// 设备移动小于10度时场景才发生偏转
+			if (Math.abs(shift) < 10) {
+				alphaX = parseInt(shift * (w*8/360));
+			};
+			curX = (curX + alphaX) || curX;
+			firstAlpha = currentAlpha;
+			if (curX < -(w * 8)) {
+				curX = -(w * 8);
+			}
+			if (curX > 0) {
+				curX = 0;
+			}
+			
+			$('.layer').css({
+				'-webkit-transform' : 'translate3d(' + curX + 'px, 0, 0)',
+				'transform' : 'translate3d(' + curX + 'px, 0, 0)'
+			});
+		}
+	}, false);	
+    </script>
+
+</body>
+</html>

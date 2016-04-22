@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="full-screen" content="yes">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <title>直播</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/common.js" type="text/javascript" charset="utf-8" data-width=640></script>
+</head>
+<body>
+    <div class="wrap home ">
+    	<img src="images/logo.png" class="ico logo" alt="" />
+    	<!--活动没开始显示-->
+      	<div class="notice ">
+      		<a href="javascript:;"><img src="images/ico_btn1.jpg" alt="" /></a>
+      		<div class="txt">直播盛典倒计时：<span id="hours">00</span>时<span id='min'>00</span>分<span id="second">00</span>秒</div>  
+      	</div>
+      	<!--活动没开始显示 end-->
+ 		<!--活动开始显示-->
+      	<div class="notice notice2 hide">
+      		<a href="javascript:;"><img src="images/ico_btn2.jpg" alt="" id="btn_go2" /></a>
+      		<div class="txt">互动抽奖时间：12:08-13:20；</div>   
+      	</div>		
+		<!--活动开始显示 end-->         	
+      	
+      	<div class="video_box">
+      		<div class="bd" id="video">
+      			
+      		</div>
+      	</div>
+      	<div class="share_box ico">
+
+      		<!--<div class="txt">目前参与发布会人数：<span>0</span></div>-->
+      		<a href="javascript:;" class='ico btn1 ' id="btn_weixin"></a>
+      		<a href="javascript:;" class='ico btn2' id='btn_qzone'></a>
+      	</div>
+      	<!--第一版上显示-->
+      	<div class="part2 part_one hide">
+      		<div class="scrollBox2" id="scroll">
+      			<div class="bd">
+		 	       	<div class="banner">
+			      		<a href="javascript:;"><img src="images/pic_b1.jpg"/></a>
+			      		<a href="javascript:;"><img src="images/pic_b2.jpg"/></a>
+			      		<a href="javascript:;"><img src="images/pic_b3.jpg"/></a>
+			      	</div>  
+		 	       	<div class="banner">
+			      		<a href="javascript:;"><img src="images/pic_b4.jpg"/></a>
+			      		<a href="javascript:;"><img src="images/pic_b5.jpg"/></a>
+			      		<a href="javascript:;"><img src="images/pic_b6.jpg"/></a>
+			      	</div>    
+		 	       	<div class="banner">
+			      		<a href="javascript:;"><img src="images/pic_b7.jpg"/></a>
+			      		<a href="javascript:;"><img src="images/pic_b8.jpg"/></a>
+			      	</div>   			      	
+      			</div>
+      			<div class="hd"></div>
+      		</div>
+	      	<img src="images/pic4.jpg" class="ico pic1" alt="" />
+	      	<script src="js/TouchSlide.1.1.js" ></script>
+			<script type="text/javascript">
+					TouchSlide({ 
+						slideCell:"#scroll",
+						effect:"left", 
+						mainCell :".bd",
+						titCell : ".hd",
+						autoPage:true, //自动分页
+					});
+			</script>	      	
+      	</div>
+      	<!--第一版上显示end-->
+		<!--第二版上显示-->	
+      	<div class="part2 part_two ">
+	       	<div class="banner">
+	      		<a href="javascript:;"><img src="images/pic1.jpg"/></a>
+	      		<a href="javascript:;"><img src="images/pic2.jpg"/></a>
+	      		<a href="javascript:;"><img src="images/pic3.jpg"/></a>
+	      	</div>  
+	      	<img src="images/pic4.jpg" class="ico pic1" alt="" />
+      	</div>		
+		<!--第二版上显示end-->
+		
+      	<img src="images/ico_fotter.png" alt=""  class="ico ico_footer"/>
+    </div>
+    <div class="pop pop_share">
+    	<div class="bd"><img src="images/ico_share.png"/></div>
+    </div>
+    <div class="page2">
+    	<img src="images/logo.png" class="ico logo" alt="" />
+    	<img src="images/bg2.jpg" class="hide" alt="" />
+    </div>
+	<div class="pop pop_step1" id='pop_step1'>
+		<div class="bd">
+			<a href="javascript:;" class="ico btn_close"></a>
+			<a href="javascript:;" class="btn_get" id='btn_get'></a>			
+		</div>
+		<img src="images/pop1.jpg" class="hide" alt="" />
+	</div>    
+	<div class="pop pop_step2"  id='pop_step2'  >
+		<div class="bd">
+			<a href="javascript:;" class="ico btn_close" ></a>
+			<a href="javascript:;" class="btn_get2" id='btn_get2'></a>
+			<input type="text" id="phone" class="phone ico" maxlength="11" />			
+		</div>
+		<img src="images/pop2.jpg" class="hide" alt="" />
+	</div>
+	<div class="pop pop_step3" id='pop_step3' >
+		<div class="bd">
+			<a href="javascript:;" class="ico btn_close"></a>
+			<a href="javascript:;" class="btn_sure btn_close" id='btn_sure'></a>			
+		</div>
+		<img src="images/pop3.jpg" class="hide" alt="" />
+	</div>	
+
+	<script src="js/shake.js"></script>
+	<script>
+		var $phone = $("#phone");
+		$('.pop_share').on('click',function(){
+			$(this).hide();
+		});
+		var isShake = false;
+		$("#btn_go2").on("click",function(){
+			$(".wrap").hide();
+			$('.page2').fadeIn(200);
+			
+			window.addEventListener('shake', shakeEventDidOccur, false);			
+		});
+		$("#btn_get").on("click",function(){
+			App.dialog.show("step2");
+		});
+		$("#btn_weixin").on("click",function(){
+			$(".pop_share").show();
+		});
+		$("#btn_get2").on("click",function(){
+			var tel = /^0?(13[0-9]|15[0-9]|18[0-9]|14[0-9])[0-9]{8}$/;
+			var oTel = $phone.val();
+	        if(oTel == "" || !tel.exec(oTel)){
+	            alert("温馨提示：请输入正确的手机号！");
+	            $phone.focus();
+	            return false;
+	        }		
+	        
+	        //成功执行
+	        $phone.val("");
+	 		App.dialog.show("step3");     
+		});		
+		//摇一摇
+		var myShakeEvent = new Shake({
+		    threshold: 15, 
+		    timeout: 1000 
+		});
+		myShakeEvent.start();
+		function shakeEventDidOccur () {
+		    App.dialog.show("step1");  
+		}
+		
+		//新增3-18
+		//倒计时
+		function Count(o){
+	        this.$hours = $(o.hours);
+	        this.$min = $(o.min);
+	        this.$second = $(o.second);
+	        this.allTime = o.allTime;
+	        this.timer; 
+	        this.callBack = o.callBack|| function(){};
+	        this.setTime(this.allTime);
+	        this.setInterval();
+	    }
+	    Count.prototype.setInterval = function(){
+	        var self = this;
+	        this.timer = setInterval(function(){
+	            if(self.allTime>0){
+	                self.allTime--;
+	                self.setTime(self.allTime);
+	            }else{
+	                clearInterval(self.timer);
+					self.callBack && self.callBack();
+	            }
+	        },1000);
+	    }
+	    Count.prototype.setTime = function(time){
+			var  time_distance= time,int_hour,int_minute,int_second;
+			var int_hour = Math.floor(time_distance/3600) //3600000
+			time_distance -= int_hour * 3600; 
+			// 分
+			var int_minute = Math.floor(time_distance/60) 
+			time_distance -= int_minute * 60; 
+			// 秒 
+			var int_second = Math.floor(time_distance/1) ;
+			// 时分秒为单数时、前面加零 
+			if(int_hour < 10){ 
+				int_hour = "0" + int_hour; 
+			} 
+			if(int_minute < 10){ 
+				int_minute = "0" + int_minute; 
+			} 
+			if(int_second < 10){
+				int_second = "0" + int_second; 
+			} 
+	        this.$hours.text(int_hour);
+	        this.$min.text(int_minute);
+	        this.$second.text(int_second);
+	    }
+	 	//倒计时调用--
+	    var sec = 10;
+	    var count = new Count({
+	        hours :"#hours",
+	        min : "#min",
+	        second : "#second",
+	        allTime : sec,
+	        callBack : function(){
+	        	$(".notice ").eq(0).hide();
+	        	$(".notice2").show();
+	        }
+	    });
+		   		
+	</script>
+	<!--3-21增加-->
+	<script src="http://imgcache.gtimg.cn/tencentvideo_v1/tvp/js/tvp.player_v2.js"></script>
+	<script src="js/zhibo.js"></script>	
+	  <script>
+   		  	// 点播调用
+    		play1("z01899olohh"); //参数要传vid
+   
+    		// 直播调用 
+   			//play2("100003600");  	//参数要传入直播id	
+   			
+	 		$(".part2 .pic1").on('click',function(){
+				if(App.isAndroid){
+					location.href = 'http://app.vipstatic.com/download/shop_android/243b6e89ab375959afb6543c6cb388b7/shop_android_243b6e89ab375959afb6543c6cb388b7_5.16.5.apk';
+				}else{
+					location.href = 'https://itunes.apple.com/cn/app/wei-pin-hui-chun-shang-xin/id417200582?mt=8';//
+				}
+			});  			
+	  </script>	
+	<!--3-21增加 end-->
+</body>
+</html>

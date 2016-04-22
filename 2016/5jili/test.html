@@ -1,0 +1,84 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+
+<title>吉利</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    	<style>
+				    		body{
+				  background-color:#333;
+				  color:white;
+				  
+				}
+				
+				#container{
+				  background-color:black;
+				  width:1000px;
+				  height:400px;
+				  overflow:hidden;
+				  position:relative;
+				  
+				}
+				
+				
+				#creature{  background:url(http://www.greensock.com/_img/codepen/bezierCreature/creature_red.png);
+				  width:27px;
+				  height:29px;
+
+				  position:absolute;
+				  
+				}
+				
+				button {
+				  padding:10px;
+				  margin: 0 10px 10px 0;
+				}
+				
+				h2 {
+				  font-family:sans-serif;
+				  font-weight:normal;
+				}
+    	</style>
+</head>
+<body>
+<h2>Super smooth play and pause with acceleration and deceleration</h2>
+<button id="pause">pause</button>
+<button id="play">play</button>
+<div id="container">
+  <div id="creature"></div>
+</div>
+
+<script src="lib/jquery-1.11.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/jquery.easing.1.3.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/jquery.mousewheel.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/TweenMax.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/app.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	var bezierTween,
+    playBtn = document.getElementById("play"),
+    pauseBtn = document.getElementById("pause");
+
+pauseBtn.onclick = function(){
+	bezierTween.pause(function(){
+		
+	});
+	console.log(bezierTween)
+}
+//bezierTween = new TweenMax("#creature", 6, {
+//  bezier:{
+//    type:"soft", 
+//    values:[{x:150, y:30}, {x:300, y:30}, {x:500 + Math.random() *100, y:320*Math.random() + 50}, {x:650, y:320*Math.random() + 50}, {x:900, y:100}, {x:990, y:400}],
+//    autoRotate:true
+//  },
+//ease:Linear.easeNone, repeat:-1});
+
+bezierTween = new TweenMax('#creature',6,{"x":200,onUpdate : function(e){
+	console.log(1)
+}})
+
+</script>
+</body>
+</html>

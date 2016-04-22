@@ -30,6 +30,9 @@
             return obj;
         }
     };
+	if( W.App.ua().isMobile){
+		location.href="http://promotion.geely.com/xindihao/m/gs.html";
+	}
     var $win  = $(W);
     var doc = D;
     var $html = $("html,body");
@@ -86,6 +89,7 @@
                             $html.stop(true).animate({"scrollTop":"+="+300+"px"},1200,"easeOutCubic",function(){});
                         }
                     });
+                
                 }
             },function(a,b){
                 $(".loading span").text(a+"%");
@@ -274,6 +278,7 @@
             $(".mark .pic").css({"width":$win.width()});
             $ico1.css({'left':"51.875%"});
             $ico2.css({'left':"57.816%"});
+         	setPop();
         },
         getTopP : function(){
             var myTop,self = this;
@@ -302,16 +307,16 @@
             });
         }
     };
-    //kv轮播
-    $(".scroll").slide({
-    	"effect" :"fold",
-    	"mainCell" : '.bd',
-    	"autoPlay": true,
-    	"autoPage" :true,
-    	"interTime" :4000,
-    	"delayTime" : 600,
-    	'titCell' :".hd ul"
-    });
+//  //kv轮播
+//  $(".scroll").slide({
+//  	"effect" :"fold",
+//  	"mainCell" : '.bd',
+//  	"autoPlay": true,
+//  	"autoPage" :true,
+//  	"interTime" :4000,
+//  	"delayTime" : 600,
+//  	'titCell' :".hd ul"
+//  });
     //五大卖点 
     !(function(){
 
@@ -418,7 +423,7 @@
             var href = $(this).attr('data-src');
             window.open(href)
             return false;
-        })
+        });
     })();
     //活动新闻
     ;(function(){
@@ -436,7 +441,7 @@
                 var html3 = '';
                 if(data.result == 1){
                     for(var i=0;i<data.data.length;i++){
-                        var html = '<li><a target="_blank" href='+data.data[i]["link"]+' class="pic"><img src='+data.data[i]["imgname"]+' alt=""></a><div class="txt_box"><a target="_blank"  href='+data.data[i]["link"]+'><img src="images/ico_btn1.jpg" alt=""></a><div class="bd"><h4>'+data.data[i]["title"]+'</h4> <h5>'+data.data[i]["content"]+'</h5> </div> </div> </li>';
+                        var html = '<li style="cursor: pointer;"  data-src='+data.data[i]["link"]+' ><a target="_blank"class="pic"><img src='+data.data[i]["imgname"]+' alt=""></a><div class="txt_box"><a target="_blank"  ><img src="images/ico_btn1.jpg" alt=""></a><div class="bd"><h4>'+data.data[i]["title"]+'</h4> <h5>'+data.data[i]["content"]+'</h5> </div> </div> </li>';
                         if(i%3==0){
                             html1+=html;
                         }else if(i%3==1){
@@ -448,8 +453,56 @@
                     $('#left_box').append(html1);
                     $('#center_box').append(html2);
                     $('#right_box').append(html3);
+			         $(".list2").on("click","li",function(){
+			            var href = $(this).attr('data-src');
+			            window.open(href)
+			            return false;
+			        });                   
                 }
             }
         });
     })();
+    !(function(){
+		var html='<div class="bd"><li><img src="images/pic/1.jpg" alt="" /><img src="images/pic/1_1.png" class="ico ico2" alt="" /></li><li><img src="images/pic/4.jpg" alt=""  /><img src="images/pic/4_1.png" class="ico ico2" alt="" /></li><li><img src="images/pic/3.jpg" alt="" /><img src="images/pic/3_1.png" class="ico ico2" alt="" /></li><li><img src="images/pic/2.jpg" alt=""/><img src="images/pic/2_1.png" class="ico ico2" alt="" /></li><li><img src="images/pic/5.jpg" alt="" /><img src="images/pic/5_1.png" class="ico ico2" alt="" /></li></div>';
+		var $popPic = $(".pop_pic");
+		var $scrollbox = $('.scrollbox');
+		$('.section4 .info').on("click",function(){
+			canMove = false;
+			setPop();
+			$popPic.show();
+			var index = $(this).index()-1;
+			$scrollbox.append(html);
+		     $('.pop_pic .scrollbox').slide({
+		    	"effect" :"fold",
+		    	"mainCell" : '.bd',
+		    	"autoPlay": true,
+		    	"autoPage" :true,
+		    	"interTime" :4000,
+		    	"prevCell":".btn_prev2",
+		    	"nextCell":".btn_next2",
+		    	"delayTime" : 600,
+		    	"defaultIndex" :index
+		    }); 			
+		});
+		$(".pop_pic .btn_close").on("click",function(){
+			$popPic.hide();
+			$popPic.find('.bd').remove();
+			canMove = true;
+		});
+ 		
+    })();
+ 	function setPop(){
+		scaleB = $win.width()/1920;
+		TweenMax.set($('.pop_pic .scrollbox'),{scale:scaleB});
+	}  
+	$('.btn_test').on("click",function(){
+		$(this).fadeOut();
+		$(".pop_testdrive").fadeIn();
+		canMove =false;
+	})
+	$(".close").on("click",function(){
+		canMove = true;
+		$(".pop_testdrive").hide();
+		$('.btn_test').fadeIn();
+	})
 })(window,document);
