@@ -60,30 +60,30 @@
     	});
     	var firstAlpha=0,currentAlpha=0;
     	window.addEventListener('deviceorientation', function(event) {
-		if (isEnabled) {
-			currentAlpha = 360 - parseInt(event.alpha);
-			var shift = firstAlpha - currentAlpha;
-			var alphaX;
-			
-			// 设备移动小于10度时场景才发生偏转
-			if (Math.abs(shift) < 10) {
-				alphaX = parseInt(shift * (w*8/360));
-			};
-			curX = (curX + alphaX) || curX;
-			firstAlpha = currentAlpha;
-			if (curX < -(w * 8)) {
-				curX = -(w * 8);
+			if (isEnabled) {
+				currentAlpha = 360 - parseInt(event.alpha);
+				var shift = firstAlpha - currentAlpha;
+				var alphaX;
+				
+				// 设备移动小于10度时场景才发生偏转
+				if (Math.abs(shift) < 10) {
+					alphaX = parseInt(shift * (w*8/360));
+				};
+				curX = (curX + alphaX) || curX;
+				firstAlpha = currentAlpha;
+				if (curX < -(w * 8)) {
+					curX = -(w * 8);
+				}
+				if (curX > 0) {
+					curX = 0;
+				}
+				
+				$('.layer').css({
+					'-webkit-transform' : 'translate3d(' + curX + 'px, 0, 0)',
+					'transform' : 'translate3d(' + curX + 'px, 0, 0)'
+				});
 			}
-			if (curX > 0) {
-				curX = 0;
-			}
-			
-			$('.layer').css({
-				'-webkit-transform' : 'translate3d(' + curX + 'px, 0, 0)',
-				'transform' : 'translate3d(' + curX + 'px, 0, 0)'
-			});
-		}
-	}, false);	
+		}, false);	
     </script>
 
 </body>

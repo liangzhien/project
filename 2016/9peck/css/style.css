@@ -38,16 +38,16 @@ html,body{ width: 100%; height: 100%; }
 .page1 .bg3{ height: 667px;background-image: url(../images/3.jpg); }
 .page1 .bd{position: absolute; height: 2002px;top:0; width: 100%;}
 .w{ width: 1000px; margin: 0 auto; position: relative; height: 100%;}
-.btn_box{ display: none; position: absolute; left: 246px;top: 576px; width: 246px;height: 152px;background-image: url(../images/ico1.png);}
+.btn_box{ display: none2; position: absolute; left: 246px;top: 519px; width: 246px;/*height: 152px;*/height: 226px;background-image: url(../images/ico1.png);}
 .btn_box a{ display: block;height: 70px;} 
-.btn_box2{ left: 784px;top: 1562px; background-image: url(../images/ico2.png);}
+.btn_box2{ display: none; left: 784px;top: 1562px; background-image: url(../images/ico2.png);}
 .video_box{position: absolute; left: -62px;top: 776px; width: 815px;height: 302px;background-image: url(../images/bg_v1.png); cursor: pointer;	}
 .video_box2{left: 534px;top: 1183px; width: 453px;height: 323px;background-image: url(../images/bg_v2.png); cursor: pointer;	}
 .bgv{ position: fixed; width: 100%;height: 100%; background: #000; opacity: .8;top: 0;left: 0; z-index: 9; filter:alpha(opacity=80) }
 .pop_video{display: none; position: absolute; width: 100%;height: 100%;position: fixed;z-index: 222;left: 0;top: 0;}
 .pop_video .bd{ position: absolute; width: 695px;height: 397px;margin: -198px 0 0 -348px; left: 50%;top: 50%;z-index: 10; background-image: url(../images/bg_v22.png)}
 .pop_video.v2 .bd{ background-image: url(../images/bg_v11.png);width: 701px;height: 424px;margin: -198px 0 0 -348px;}
-.pop_video .btn_close{     position: absolute;
+.pop_video .btn_close{ position: absolute;
     font-size: 30px;
     right: -23px;
     top: 29px;
